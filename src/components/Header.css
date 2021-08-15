@@ -1,0 +1,40 @@
+.header-shop {
+  /* position: fixed;
+  top: 0;
+  width: 100%; */
+
+  background-color: aliceblue;
+  text-align: center;
+  font-weight: bold;
+  font-size: calc(10px + 2vmin);
+  color: blueviolet;
+  height: 15vh;
+}
+
+.cart-icon {
+  color: blueviolet;
+  position: absolute;
+  right: 3vh;
+  /* display: block; */
+}
+
+.cart-icon::after {
+  content: attr(value);
+  position: absolute;
+  color: whitesmoke;
+  right: 0;
+  /* top: 0; */
+  width: 50%;
+  background-color: orange;
+  border-radius: 50%;
+  font-size: 50%;
+  font-weight: bold;
+}
+
+.text-to-home {
+  height: 30px;
+  color: blueviolet;
+}
+a {
+  text-decoration: none;
+}
