@@ -19,7 +19,7 @@ import {
   useHistory,
 } from 'react-router-dom';
 
-const URL = 'http://localhost:63579/WebService.asmx';
+ 
 
 function Header({
   setSearchResults,
@@ -31,54 +31,21 @@ function Header({
 }) {
   const [productsObj, setObjs] = useState([]);
   const [searchString, setString] = useState('');
-  //const [numberOfProducts, setNumberOfProducts] = useState('');
-  const [index, setIndex] = useState('');
+   const [index, setIndex] = useState('');
   const [productObjs, setProductObjs] = useState();
   let resultArray = [];
 
-  // const productList = () => {
-  //   fetch('http://localhost:50496/WebService.asmx/ProductList')
-  //     .then((response) => response.text())
-  //     .then((data) => {
-  //       console.log('fetch setSearchResults', data);
-  //     });
-  // };
+  
 
   const productList = () => {
-    console.log('fetch localhost');
-    fetch('http://localhost:50496/WebService.asmx/ProductList')
-      .then((response) => response.text())
-      .then(
-        (xml) =>
-          new window.DOMParser().parseFromString(xml, 'text/xml')
-            .documentElement.firstChild.textContent
-      )
-      .then((jsonStr) => JSON.parse(jsonStr))
-      .then((data) => setSearchResults(data));
+     setSearchResults(arraySet);
   };
 
   useEffect(() => {
     productList();
     console.log('useEffect');
   }, []);
-  // }, [setSearchResults(productsObj)]);
-
-  // const numberofItems = useMemo(() => {
-  //   console.log('numberofItems = useMemo');
-  //   if (itemsInCart === undefined) {
-  //     // (itemsInCart.?current.length === 0)
-  //     setNumberOfProducts('');
-  //     console.log('itemsInCart', itemsInCart);
-  //     return itemsQuantity;
-  //   } else if (itemsInCart.current.length > 99) {
-  //     setNumberOfProducts('99+');
-  //     return itemsQuantity;
-  //   } else {
-  //     setNumberOfProducts(itemsInCart.current.length);
-  //     console.log(itemsInCart.current.length);
-  //     return itemsQuantity;
-  //   }
-  // }, [itemsInCart?.current]);
+ 
 
   const onChangHandler = (e) => {
     setString(e.target.value);
@@ -146,3 +113,12 @@ function Header({
   );
 }
 export default Header;
+
+const arraySet =     [{"ProductID":1,"ProductName":"Vitamin C","CategoryName":"Vitamins","Price":10,"Stock":268,"ProductDescription":"","ProductOverview":"","ProductImage":"https://image.flaticon.com/icons/png/512/1052/1052788.png"},
+{"ProductID":2,"ProductName":"Protein powder","CategoryName":"Protein Blends","Price":26,"Stock":290,"ProductDescription":"","ProductOverview":"","ProductImage":"https://image.flaticon.com/icons/png/512/1181/1181620.png"},
+     {"ProductID":3,"ProductName":"Multi Vitamins Lorem","CategoryName":"Multivitamin","Price":17.5,"Stock":290,"ProductDescription":"","ProductOverview":"","ProductImage":"https://image.freepik.com/free-vector/realistic-vitamin-complex-package_52683-35112.jpg"},
+     {"ProductID":4,"ProductName":"Multi Vitamins","CategoryName":"Multivitamin","Price":18,"Stock":203,"ProductDescription":"","ProductOverview":"","ProductImage":"https://image.freepik.com/free-vector/realistic-design-vitamin-complex-package_23-2148484769.jpg"},
+     {"ProductID":5,"ProductName":"Complex B","CategoryName":"Vitamins","Price":12.8,"Stock":2,"ProductDescription":"","ProductOverview":"","ProductImage":"https://image.freepik.com/free-psd/amber-medicine-bottle-mockup_358694-422.jpg"},
+     {"ProductID":6,"ProductName":"Vitamin D","CategoryName":"Vitamins","Price":19,"Stock":120,"ProductDescription":"","ProductOverview":"","ProductImage":"https://image.freepik.com/free-psd/amber-medicine-bottle-mockup_358694-432.jpg"},
+     {"ProductID":7,"ProductName":"Zinc 23 mg","CategoryName":"Vitamins","Price":23,"Stock":200,"ProductDescription":"","ProductOverview":"","ProductImage":"https://image.freepik.com/free-psd/suplement-bottle-mockup_368303-59.jpg"}];
+  };
